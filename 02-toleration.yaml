@@ -25,3 +25,8 @@ spec:
       containers:
       - name: nginx
         image: nginx:trixie-perl
+      tolerations:
+      - key: "project"
+        operator: "Equal"
+        value: "ecommerce"
+        effect: "NoSchedule"

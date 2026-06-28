@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taints-tolerations
+  # replicaset labels
+  labels:
+    purpose: tolerations-demo
+    project: ecommerce
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: ip-192-168-1-9.ec2.internal
+  replicas: 1 #create 3 pods of replica
+  selector:
+    # these labels are used to select the pods
+    matchLabels:
+      purpose: tolerations-demo
+      project: ecommerce
+# pod definition      
+  template:
+    metadata:
+      labels:
+        purpose: tolerations-demo
+        project: ecommerce
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:trixie-perl

@@ -7,8 +7,6 @@ metadata:
     purpose: tolerations-demo
     project: ecommerce
 spec:
-  nodeSelector:
-    kubernetes.io/hostname: ip-192-168-1-9.ec2.internal
   replicas: 1 #create 3 pods of replica
   selector:
     # these labels are used to select the pods
@@ -22,6 +20,8 @@ spec:
         purpose: tolerations-demo
         project: ecommerce
     spec:
+      nodeSelector:
+        kubernetes.io/hostname: ip-192-168-1-9.ec2.internal
       containers:
       - name: nginx
         image: nginx:trixie-perl

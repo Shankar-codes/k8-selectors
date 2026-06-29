@@ -58,6 +58,6 @@ spec:
             - store
         topologyKey: "kubernetes.io/hostname"
   containers:
-  - name: nginx
-    image: nginx
+  - name: web-app
+    image: nginx:1.16-alphine
     imagePullPolicy: Always

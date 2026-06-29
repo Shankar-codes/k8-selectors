@@ -25,14 +25,14 @@ spec:
       # if the weight is more thre preference is high
       - weight: 1
         preference: 
-          - matchExpressions:
+          matchExpressions:
           - key: project
             operator: In
             values:
             - roboshop
       - weight: 1
         preference: 
-          - matchExpressions:
+          matchExpressions:
           - key: project
             operator: In
             values:

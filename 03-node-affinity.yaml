@@ -16,6 +16,26 @@ spec:
             - us-east-1c
             - us-east-1d
             # scheduler checks the above 4 availibilty zone and keeps the pod in node
+          - key: disktype
+            operator: In
+            values:
+            - ssd
+      # soft rule
+      preferredDuringSchedulingIgnoredDuringExecution:
+      - weight: 1
+        preference: 
+          - matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - roboshop
+      - weight: 1
+        preference: 
+          - matchExpressions:
+          - key: project
+            operator: In
+            values:
+            - amazon
   containers:
   - name: nginx
     image: nginx

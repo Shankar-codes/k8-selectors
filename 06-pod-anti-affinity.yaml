@@ -4,7 +4,7 @@ metadata:
   name: pod-affinity-3
 spec:
   affinity:
-    podAffinityTerm: 
+    podAntiAffinity: 
       requiredDuringSchedulingIgnoredDuringExecution:
         # pod labels
       - labelSelector:

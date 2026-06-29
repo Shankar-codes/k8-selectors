@@ -36,28 +36,34 @@ spec:
   selector:
     matchLabels:
       app: web-store
-  affinity:
-    podAntiAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution:
-        # pod labels
-      - labelSelector:
-          matchExpressions:
-          - key: app
-            operator: In
-            values:
-            - web-store
-        topologyKey: "kubernetes.io/hostname"
-    podAffinity: 
-      requiredDuringSchedulingIgnoredDuringExecution:
-        # pod labels
-      - labelSelector:
-          matchExpressions:
-          - key: app
-            operator: In
-            values:
-            - store
-        topologyKey: "kubernetes.io/hostname"
-  containers:
-  - name: web-app
-    image: nginx:1.16-alphine
-    imagePullPolicy: Always
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: web-store
+    spec:
+      affinity:
+        podAntiAffinity: 
+          requiredDuringSchedulingIgnoredDuringExecution:
+            # pod labels
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - web-store
+            topologyKey: "kubernetes.io/hostname"
+        podAffinity: 
+          requiredDuringSchedulingIgnoredDuringExecution:
+            # pod labels
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - store
+            topologyKey: "kubernetes.io/hostname"
+      containers:
+      - name: web-app
+        image: nginx:1.16-alphine
+        imagePullPolicy: Always

@@ -22,6 +22,7 @@ spec:
             - ssd
       # soft rule
       preferredDuringSchedulingIgnoredDuringExecution:
+      # if the weight is more thre preference is high
       - weight: 1
         preference: 
           - matchExpressions:
